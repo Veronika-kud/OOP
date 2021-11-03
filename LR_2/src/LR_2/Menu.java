@@ -1,0 +1,34 @@
+package LR_2;
+
+import java.util.Scanner;
+public class Menu {
+
+	
+	public static void Hi(String fio)
+	{
+		System.out.println("Пожалуйста, " + fio + ", для просмотра информации"
+				+ "выберите действие: \n"
+				+ "1 - Список контрагентов \n"
+				+ "2 - Информация о контрагенте \n"
+				+ "3 - Отправить заявку на налоговый платеж \n"
+				+ "4 - Выход из системы \n");
+	}
+	public static void Choose(Данные data, Scanner sc, String fio_client)
+	{   int операция = 4;
+		do {
+			Hi(fio_client);
+			операция = sc.nextInt();
+		switch (операция)
+		{
+		case 1: data.Список(); break;
+		case 2: System.out.println("Введите идентификационный номер контрагента"); 
+		String code1 =  sc.next();
+		data.Info(code1); break;
+		case 3: System.out.println("Введите идентификационный номер контрагента"); 
+		String code2 =  sc.next(); 
+		Клиент новый = new Клиент(fio_client);
+		data.Подача_заявки(code2, новый); break;
+		default: break;}
+		} while(операция !=4);
+	}
+}
